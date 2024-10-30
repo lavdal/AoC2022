@@ -32,8 +32,27 @@ def opgave1(input_data):
     print(f"svaret på opgave 1 er: {total_score}")
     
 def opgave2(input_data):
-    pass
+    """
+    A => Rock 1points; B => Paper 2points ; C => scissors 3points
+    x = Lose 0points; Y => Tie 3points ; Z => Win 6points
+    """
+    total_sum = 0
     
+    outcome_dict = {
+            "A X": 3, #3 for scissor + 0 for lose
+            "A Y": 4, #3 for tie + 1 for rock
+            "A Z": 8, #2 for paper + 6 for win
+            "B X": 1, #1 for rock + 0 for lose
+            "B Y": 5, #2 for paper + 3 for tie
+            "B Z": 9, #3 for scissor + 6 for win
+            "C X": 2, #2 for paper + 0 for lose
+            "C Y": 6, #3 for scissor + 3 for tie
+            "C Z": 7, #1 for rock + 6 for win
+        }
+    for line in input_data:
+        total_sum += outcome_dict[line.strip()]
+    
+    print(f"svaret på opgave 2 er: {total_sum}")
     
 if __name__ == "__main__":
     with open("input.txt") as fin:
